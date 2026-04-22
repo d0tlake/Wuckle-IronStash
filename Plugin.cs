@@ -12,7 +12,7 @@ public class Plugin : BaseUnityPlugin
     public void Awake()
     {
         Logger = base.Logger;
-        Harmony harmony = new("dotlake.stash");
+        Harmony harmony = new("dotlake.ironstash");
         harmony.PatchAll();
         Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} is loaded");
     }
