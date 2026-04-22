@@ -12,5 +12,4 @@ I only wanted to allow items that are easily obtained within 1 or 2 runs to the 
 ## How to Use:
 Select competitive mode, then select the items you want in your locker.
 - Make sure it's only the items that are allowed from the above list.
-
 - If you want to stop stashing, then set it to items that are not allowed.
