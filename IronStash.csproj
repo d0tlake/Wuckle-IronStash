@@ -12,7 +12,7 @@
 	<PropertyGroup>
 		<BepInExPluginGuid>dotlake.IronStash</BepInExPluginGuid>
 		<BepInExPluginName>IronStash</BepInExPluginName>
-		<PluginUrl>https://github.com/d0tlake</PluginUrl>
+		<PluginUrl>https://github.com/d0tlake/Wuckle-IronStash</PluginUrl>
 		<DependenciesJson>["BepInEx-BepInExPack-5.4.2100"]</DependenciesJson>
 		<ManifestOutput>$(ProjectDir)manifest.json</ManifestOutput>
 		<ZipOutputPath>$(ProjectDir)IronStash.zip</ZipOutputPath>
