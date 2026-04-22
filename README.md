@@ -1,6 +1,6 @@
 # IronStash
 
-Adds the ability to stash your lockers with items from the competitive item selection.
+Adds the ability to stash your Iron Knuckle lockers with items from the competitive item selection.
 Note that only the following will work:
 - grubs
 - injectors
