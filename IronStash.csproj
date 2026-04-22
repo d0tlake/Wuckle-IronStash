@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Version>0.1.0</Version>
+		<Description>Stash those lockers</Description>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>latest</LangVersion>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<BepInExPluginGuid>dotlake.IronStash</BepInExPluginGuid>
+		<BepInExPluginName>IronStash</BepInExPluginName>
+		<PluginUrl>https://github.com/d0tlake</PluginUrl>
+		<DependenciesJson>["BepInEx-BepInExPack-5.4.2100"]</DependenciesJson>
+		<ManifestOutput>$(ProjectDir)manifest.json</ManifestOutput>
+		<ZipOutputPath>$(ProjectDir)IronStash.zip</ZipOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<RestoreAdditionalProjectSources>
+			https://api.nuget.org/v3/index.json;
+			https://nuget.bepinex.dev/v3/index.json;
+			https://nuget.samboy.dev/v3/index.json
+		</RestoreAdditionalProjectSources>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PythonCmd Condition="'$(OS)' == 'Windows_NT'">py -3</PythonCmd>
+		<PythonCmd Condition="'$(OS)' != 'Windows_NT'">python3</PythonCmd>
+		<ThunderstoreScript>$([System.IO.Path]::Combine('$(ProjectDir)','scripts','thunderstore.py'))</ThunderstoreScript>
+		<ReadmePath>$([System.IO.Path]::Combine('$(ProjectDir)','README.md'))</ReadmePath>
+		<ChangelogPath>$([System.IO.Path]::Combine('$(ProjectDir)','CHANGELOG.md'))</ChangelogPath>
+		<IconPath>$([System.IO.Path]::Combine('$(ProjectDir)','img','icon.png'))</IconPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.Core" Version="5.*" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+		<PackageReference Include="UnityEngine.Modules" Version="2022.3.32" IncludeAssets="compile" />
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+		<PackageReference Include="NETStandard.Library" Version="2.0.3" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>lib\Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="ALINE">
+			<HintPath>lib\ALINE.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="GenerateManifest" AfterTargets="Build">
+		<ItemGroup>
+			<_Manifest Include="{" />
+			<_Manifest Include="  &quot;name&quot;: &quot;$(BepInExPluginName)&quot;," />
+			<_Manifest Include="  &quot;version_number&quot;: &quot;$(BepInExPluginVersion)&quot;," />
+			<_Manifest Include="  &quot;website_url&quot;: &quot;$(PluginUrl)&quot;," />
+			<_Manifest Include="  &quot;description&quot;: &quot;$(Description)&quot;," />
+			<_Manifest Include="  &quot;dependencies&quot;: $(DependenciesJson)" />
+			<_Manifest Include="}" />
+		</ItemGroup>
+		<WriteLinesToFile File="$(ManifestOutput)" Lines="@(_Manifest)" Overwrite="true" />
+	</Target>
+
+	<Target Name="ThunderstorePackage" AfterTargets="Build">
+		<Exec Command="$(PythonCmd) &quot;$(ThunderstoreScript)&quot; --out &quot;$(ZipOutputPath)&quot; --readme &quot;$(ReadmePath)&quot; --changelog &quot;$(ChangelogPath)&quot; --manifest &quot;$(ManifestOutput)&quot; --icon &quot;$(IconPath)&quot; --dll &quot;$(TargetPath)&quot;" />
+	</Target>
+
+</Project>
