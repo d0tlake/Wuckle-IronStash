@@ -20,7 +20,10 @@ namespace IronStash.Patches
                     if (itemObjectPrefab != null && whitelist.Contains(itemObjectPrefab.itemData.itemName))
                     {
                         string data = SettingsManager.settings.competitiveSettings.lockerItems[i];
-                        CL_GameManager.SetGameFlag("equiplocker-" + CL_GameManager.GetBaseGamemode().GetGamemodeName() + "local" + (i + 1), state: true, data);
+                        CL_GameManager.SetGameFlag("equiplocker-"
+                            + CL_GameManager.GetBaseGamemode().GetGamemodeName()
+                            + "local"
+                            + (i + 1), state: true, data, save: true);
                     }
                 }
             }
