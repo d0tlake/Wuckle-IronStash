@@ -14,6 +14,11 @@ namespace IronStash.Patches
 
             if (CL_GameManager.GetBaseGamemode().IsIronKnuckle())
             {
+                if (CL_GameManager.GetBaseGamemode().isEndless)
+                {
+                    return;
+                }
+
                 for (int i = 0; i < SettingsManager.settings.competitiveSettings.lockerItems.Count; i++)
                 {
                     Item_Object itemObjectPrefab = CL_AssetManager.GetItemObjectPrefab(SettingsManager.settings.competitiveSettings.lockerItems[i]);

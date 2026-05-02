@@ -1,6 +1,6 @@
 {
 "name": "IronStash",
-"version_number": "0.1.4",
+"version_number": "0.1.5",
 "website_url": "https://github.com/d0tlake/Wuckle-IronStash",
 "description": "Stash those lockers",
 "dependencies": ["BepInEx-BepInExPack-5.4.2100"]

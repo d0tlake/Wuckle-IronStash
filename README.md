@@ -7,6 +7,8 @@ Note that only the following will work:
 - pills
 - food bars
 
+This will also turn off bindings automatically. Seems to be a side effect of pre-stashing the lockers. Wont fix since it doesn't really matter for campaign runs. Set to non-whitelisted items to do binding runs.
+
 I only wanted to allow items that are easily obtained within 1 or 2 runs to the first interlude. This mod is just meant to be a way to avoid the busy work of having to prep a run for Iron Knuckle, not as a replacement for competitive mode or a way to cheat.
 
 Note that item lockers and facility upgrades in general *will* be removed from Iron Knuckle for the Nest update.

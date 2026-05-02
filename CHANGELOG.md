@@ -1,3 +1,7 @@
+# Version 0.1.5 (05-02-2026)
+
+Fixed to not affect endless to avoid turning off bindings
+
 # Version 0.1.4 (04-25-2026)
 
 Fixed again, whitelist was broken
